@@ -1,0 +1,23 @@
+language: python
+
+virtualenv:
+  system_site_packages: true
+
+before_install:
+  - sudo add-apt-repository ppa:ubuntugis/ppa -y
+  - sudo apt-get update -q
+  - sudo apt-get install -y gdal-bin libgdal-dev libgdal20
+
+addons:
+ apt:
+  packages:
+    - build-essential
+
+python:
+  - "3.5.2"
+
+install:
+  pip install -r requirements.txt
+
+script:
+  python rastercalc.py
